@@ -38,8 +38,19 @@
                         <input type="text" id="j_c" placeholder="Ej: Jefe Mayor / Opcional">
                         <label>Descripción y Drops</label>
                         <textarea id="j_d" placeholder="Escribe detalles..." required></textarea>
-                        <label>URL de la Imagen</label>
-                        <input type="url" id="j_i" placeholder="https://..." required>
+                        
+                        <label>Imagen (URL, Archivo de PC o Captura Ctrl+V)</label>
+                        <input type="text" id="j_i" placeholder="https://... o pega/sube una imagen" required oninput="updatePreview('j_i')">
+                        <div style="display:flex; gap:10px; align-items:center; margin-top:6px; margin-bottom:8px;">
+                            <input type="file" id="j_i_file" accept="image/*" style="display:none;" onchange="handleFileSelect(event, 'j_i')">
+                            <button type="button" class="nav-btn" style="padding:4px 10px; font-size:0.8rem;" onclick="document.getElementById('j_i_file').click()">📁 Elegir del PC</button>
+                            <span style="font-size:0.8rem; color:#94a3b8;">📋 O usa <b>Ctrl + V</b></span>
+                        </div>
+                        <div id="j_i_preview_container" style="display:none; margin-bottom:10px;">
+                            <img id="j_i_preview" src="" style="max-height:120px; border-radius:6px; border:1px solid #3b82f6; display:block; margin-bottom:4px;">
+                            <button type="button" class="btn-danger" style="padding:2px 8px; font-size:0.75rem;" onclick="clearImage('j_i')">Remover Imagen</button>
+                        </div>
+
                         <div style="display:flex; gap:10px; margin-top:10px;">
                             <button type="submit" id="btn-jefes" class="btn-primary">Guardar Jefe</button>
                             <button type="button" id="cancel-jefes" class="btn-danger" style="display:none;" onclick="resetForm('jefes')">Cancelar</button>
@@ -94,8 +105,19 @@
                         <input type="text" id="a_da" placeholder="Ej: +15 Ataque" required>
                         <label>Método de Obtención</label>
                         <input type="text" id="a_o" placeholder="Ej: Drop del Jefe Final" required>
-                        <label>URL de la Imagen</label>
-                        <input type="url" id="a_i" placeholder="https://..." required>
+                        
+                        <label>Imagen (URL, Archivo de PC o Captura Ctrl+V)</label>
+                        <input type="text" id="a_i" placeholder="https://... o pega/sube una imagen" required oninput="updatePreview('a_i')">
+                        <div style="display:flex; gap:10px; align-items:center; margin-top:6px; margin-bottom:8px;">
+                            <input type="file" id="a_i_file" accept="image/*" style="display:none;" onchange="handleFileSelect(event, 'a_i')">
+                            <button type="button" class="nav-btn" style="padding:4px 10px; font-size:0.8rem;" onclick="document.getElementById('a_i_file').click()">📁 Elegir del PC</button>
+                            <span style="font-size:0.8rem; color:#94a3b8;">📋 O usa <b>Ctrl + V</b></span>
+                        </div>
+                        <div id="a_i_preview_container" style="display:none; margin-bottom:10px;">
+                            <img id="a_i_preview" src="" style="max-height:120px; border-radius:6px; border:1px solid #3b82f6; display:block; margin-bottom:4px;">
+                            <button type="button" class="btn-danger" style="padding:2px 8px; font-size:0.75rem;" onclick="clearImage('a_i')">Remover Imagen</button>
+                        </div>
+
                         <div style="display:flex; gap:10px; margin-top:10px;">
                             <button type="submit" id="btn-armas" class="btn-primary">Guardar Arma o Armadura</button>
                             <button type="button" id="cancel-armas" class="btn-danger" style="display:none;" onclick="resetForm('armas')">Cancelar</button>
@@ -124,8 +146,19 @@
                         <input type="text" id="m_u" placeholder="Ej: Capa -50 a -64" required>
                         <label>Uso Principal</label>
                         <input type="text" id="m_us" placeholder="Ej: Forja de Armaduras" required>
-                        <label>URL de la Imagen</label>
-                        <input type="url" id="m_i" placeholder="https://..." required>
+                        
+                        <label>Imagen (URL, Archivo de PC o Captura Ctrl+V)</label>
+                        <input type="text" id="m_i" placeholder="https://... o pega/sube una imagen" required oninput="updatePreview('m_i')">
+                        <div style="display:flex; gap:10px; align-items:center; margin-top:6px; margin-bottom:8px;">
+                            <input type="file" id="m_i_file" accept="image/*" style="display:none;" onchange="handleFileSelect(event, 'm_i')">
+                            <button type="button" class="nav-btn" style="padding:4px 10px; font-size:0.8rem;" onclick="document.getElementById('m_i_file').click()">📁 Elegir del PC</button>
+                            <span style="font-size:0.8rem; color:#94a3b8;">📋 O usa <b>Ctrl + V</b></span>
+                        </div>
+                        <div id="m_i_preview_container" style="display:none; margin-bottom:10px;">
+                            <img id="m_i_preview" src="" style="max-height:120px; border-radius:6px; border:1px solid #3b82f6; display:block; margin-bottom:4px;">
+                            <button type="button" class="btn-danger" style="padding:2px 8px; font-size:0.75rem;" onclick="clearImage('m_i')">Remover Imagen</button>
+                        </div>
+
                         <div style="display:flex; gap:10px; margin-top:10px;">
                             <button type="submit" id="btn-minerales" class="btn-primary">Guardar Mineral</button>
                             <button type="button" id="cancel-minerales" class="btn-danger" style="display:none;" onclick="resetForm('minerales')">Cancelar</button>
@@ -154,8 +187,19 @@
                         <textarea id="r_ing" placeholder="Ej: 2x Rubí, 1x Frasco de Agua" required></textarea>
                         <label>Estación / Mesa</label>
                         <input type="text" id="r_e" placeholder="Ej: Mesa Alquímica" required>
-                        <label>URL de la Imagen</label>
-                        <input type="url" id="r_i" placeholder="https://..." required>
+                        
+                        <label>Imagen (URL, Archivo de PC o Captura Ctrl+V)</label>
+                        <input type="text" id="r_i" placeholder="https://... o pega/sube una imagen" required oninput="updatePreview('r_i')">
+                        <div style="display:flex; gap:10px; align-items:center; margin-top:6px; margin-bottom:8px;">
+                            <input type="file" id="r_i_file" accept="image/*" style="display:none;" onchange="handleFileSelect(event, 'r_i')">
+                            <button type="button" class="nav-btn" style="padding:4px 10px; font-size:0.8rem;" onclick="document.getElementById('r_i_file').click()">📁 Elegir del PC</button>
+                            <span style="font-size:0.8rem; color:#94a3b8;">📋 O usa <b>Ctrl + V</b></span>
+                        </div>
+                        <div id="r_i_preview_container" style="display:none; margin-bottom:10px;">
+                            <img id="r_i_preview" src="" style="max-height:120px; border-radius:6px; border:1px solid #3b82f6; display:block; margin-bottom:4px;">
+                            <button type="button" class="btn-danger" style="padding:2px 8px; font-size:0.75rem;" onclick="clearImage('r_i')">Remover Imagen</button>
+                        </div>
+
                         <div style="display:flex; gap:10px; margin-top:10px;">
                             <button type="submit" id="btn-recetas" class="btn-primary">Guardar Crafteo</button>
                             <button type="button" id="cancel-recetas" class="btn-danger" style="display:none;" onclick="resetForm('recetas')">Cancelar</button>
@@ -184,8 +228,19 @@
                         <input type="text" id="u_co" placeholder="Ej: Spawn / Overworld X: 100, Z: -200" required>
                         <label>Descripción</label>
                         <textarea id="u_d" placeholder="Detalles sobre lo que se encuentra en este lugar..." required></textarea>
-                        <label>URL de la Imagen</label>
-                        <input type="url" id="u_i" placeholder="https://..." required>
+                        
+                        <label>Imagen (URL, Archivo de PC o Captura Ctrl+V)</label>
+                        <input type="text" id="u_i" placeholder="https://... o pega/sube una imagen" required oninput="updatePreview('u_i')">
+                        <div style="display:flex; gap:10px; align-items:center; margin-top:6px; margin-bottom:8px;">
+                            <input type="file" id="u_i_file" accept="image/*" style="display:none;" onchange="handleFileSelect(event, 'u_i')">
+                            <button type="button" class="nav-btn" style="padding:4px 10px; font-size:0.8rem;" onclick="document.getElementById('u_i_file').click()">📁 Elegir del PC</button>
+                            <span style="font-size:0.8rem; color:#94a3b8;">📋 O usa <b>Ctrl + V</b></span>
+                        </div>
+                        <div id="u_i_preview_container" style="display:none; margin-bottom:10px;">
+                            <img id="u_i_preview" src="" style="max-height:120px; border-radius:6px; border:1px solid #3b82f6; display:block; margin-bottom:4px;">
+                            <button type="button" class="btn-danger" style="padding:2px 8px; font-size:0.75rem;" onclick="clearImage('u_i')">Remover Imagen</button>
+                        </div>
+
                         <div style="display:flex; gap:10px; margin-top:10px;">
                             <button type="submit" id="btn-ubicaciones" class="btn-primary">Guardar Ubicación</button>
                             <button type="button" id="cancel-ubicaciones" class="btn-danger" style="display:none;" onclick="resetForm('ubicaciones')">Cancelar</button>
@@ -202,6 +257,15 @@
 
     <script>
         const store = {};
+        let currentCategory = 'jefes';
+
+        const categoryInputMap = {
+            jefes: 'j_i',
+            armas: 'a_i',
+            minerales: 'm_i',
+            recetas: 'r_i',
+            ubicaciones: 'u_i'
+        };
 
         const formatters = {
             jefes: item => `<b>${item.nombre}</b>`,
@@ -213,12 +277,105 @@
         };
 
         function showTab(evt, name) {
+            currentCategory = name;
             document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
             document.getElementById('tab-' + name).style.display = 'block';
             evt.currentTarget.classList.add('active');
         }
 
+        // --- MANEJO DE IMÁGENES (URL, ARCHIVOS PC Y CTRL+V) ---
+        function processAndSetImage(file, inputId) {
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const maxDim = 1000;
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > maxDim || height > maxDim) {
+                        if (width > height) {
+                            height = Math.round((height * maxDim) / width);
+                            width = maxDim;
+                        } else {
+                            width = Math.round((width * maxDim) / height);
+                            height = maxDim;
+                        }
+                    }
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    const base64Str = canvas.toDataURL('image/png', 0.85);
+                    setImageValue(inputId, base64Str);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function setImageValue(inputId, value) {
+            const input = document.getElementById(inputId);
+            if (input) {
+                input.value = value;
+                updatePreview(inputId);
+            }
+        }
+
+        function updatePreview(inputId) {
+            const input = document.getElementById(inputId);
+            const container = document.getElementById(inputId + '_preview_container');
+            const previewImg = document.getElementById(inputId + '_preview');
+
+            if (!input || !container || !previewImg) return;
+
+            const val = input.value.trim();
+            if (val) {
+                previewImg.src = val;
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+                previewImg.src = '';
+            }
+        }
+
+        function clearImage(inputId) {
+            const input = document.getElementById(inputId);
+            const fileInput = document.getElementById(inputId + '_file');
+            if (input) input.value = '';
+            if (fileInput) fileInput.value = '';
+            updatePreview(inputId);
+        }
+
+        function handleFileSelect(evt, inputId) {
+            const file = evt.target.files[0];
+            if (file) {
+                processAndSetImage(file, inputId);
+            }
+        }
+
+        // Listener global de PEGAR (Ctrl + V)
+        window.addEventListener('paste', function(e) {
+            const targetInputId = categoryInputMap[currentCategory];
+            if (!targetInputId) return;
+
+            const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+            for (let item of items) {
+                if (item.type.indexOf('image') !== -1) {
+                    const file = item.getAsFile();
+                    processAndSetImage(file, targetInputId);
+                    e.preventDefault();
+                    break;
+                }
+            }
+        });
+
+        // --- MANEJO DE FORMULARIOS ---
         async function handleFormSubmit(e, cat, data) {
             e.preventDefault();
             const editId = document.getElementById(`edit-id-${cat}`).value;
@@ -254,6 +411,7 @@
                 j_c.value = item.categoria || '';
                 j_d.value = item.descripcion || '';
                 j_i.value = item.imagen_url || '';
+                updatePreview('j_i');
             } else if (cat === 'novedades') {
                 n_v.value = item.version || '';
                 n_c.value = item.categoria || '';
@@ -264,24 +422,28 @@
                 a_da.value = item.danio || '';
                 a_o.value = item.obtencion || '';
                 a_i.value = item.imagen_url || '';
+                updatePreview('a_i');
             } else if (cat === 'minerales') {
                 m_n.value = item.nombre || '';
                 m_c.value = item.categoria || '';
                 m_u.value = item.ubicacion || '';
                 m_us.value = item.uso || '';
                 m_i.value = item.imagen_url || '';
+                updatePreview('m_i');
             } else if (cat === 'recetas') {
                 r_n.value = item.nombre || '';
                 r_c.value = item.categoria || '';
                 r_ing.value = item.ingredientes || '';
                 r_e.value = item.estacion || '';
                 r_i.value = item.imagen_url || '';
+                updatePreview('r_i');
             } else if (cat === 'ubicaciones') {
                 u_n.value = item.nombre || '';
                 u_c.value = item.categoria || '';
                 u_co.value = item.coordenadas || '';
                 u_d.value = item.descripcion || '';
                 u_i.value = item.imagen_url || '';
+                updatePreview('u_i');
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -292,6 +454,9 @@
             document.getElementById(`title-${cat}`).innerText = "Añadir Elemento";
             document.getElementById(`btn-${cat}`).innerText = "Guardar";
             document.getElementById(`cancel-${cat}`).style.display = "none";
+            if (categoryInputMap[cat]) {
+                clearImage(categoryInputMap[cat]);
+            }
         }
 
         async function removeItem(cat, id) {
